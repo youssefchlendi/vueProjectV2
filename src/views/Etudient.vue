@@ -22,10 +22,14 @@
       <td> {{ etudient.cin }} </td>
       <td> {{ etudient.class }} </td>
       <td> {{ etudient.numins }} </td>
-      <td>  </td>
+      <td>
+        <button type="button" class=" btn btn-danger" @click="deleteData(etudient.id)"><span class="material-icons">delete</span></button>
+        <button type="button" class="mx-2 btn btn-warning" @click="showEditModal(etudient.id)"><span class="material-icons">edit</span></button>
+      </td>
     </tr>
   </tbody>
 </table>
+<UpdateEtudientModal @show-edit-modal="showEditModal" @update-data="updateData" :Pid="id" />
 <CreateEtudientModal @show-create-modal="showCreateModal" @post-data="postData" />
     <!-- <pre>
         {{ this.classes }}
@@ -34,6 +38,7 @@
 </template>
 
 <script>
+import UpdateEtudientModal from '../components/etudient/UpdateEtudientModal.vue';
 import CreateEtudientModal from '../components/etudient/CreateEtudientModal.vue';
 // @ is an alias to /src
 import axios from "axios";
@@ -41,10 +46,13 @@ export default {
   name: "Home",
   components: {
       CreateEtudientModal,
+      UpdateEtudientModal
   },
   data() {
     return {
-      etudients:null,
+        id:null,
+        etudients:null,
+        etudient:null,
     };
   },
   methods: {
@@ -89,12 +97,52 @@ export default {
             let header = {
         };
         axios
-        .post("http://localhost:8080/testApi/api/class/delete.php", data, header)
+        .post("http://localhost:8080/testApi/api/etudient/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
             this.getAll();
         });
+    },
+    getOneE(id){
+        let oneData=[];
+        let tab={};
+        axios
+            .get("http://localhost/testApi/api/etudient/read_one.php?id="+id)
+            .then((response) => (oneData = response.data))
+            .then(()=>{
+                Object.keys(oneData).forEach((key) =>{
+                tab[key] = oneData[key];
+            });})
+            .then(() =>{
+                this.etudient=tab;
+            });
+    },
+    showEditModal(id){
+        this.id=id;
+        window.$('#editEtudient').hasClass("show")?window.$('#editEtudient').modal("hide"):window.$('#editEtudient').modal("show");
+    },
+    updateData(arg){
+        let data;
+        if (typeof arg!=='undefined'){
+            data=arg;
+        }
+        console.log(arg);
+        let header = {
+            "Access-Control-Allow-Origin": "*",
+            Accept: "*/*",
+            Connection: "keep-alive",
+            "Content-type": "application/json",
+        };
+        axios
+        .post("http://localhost:8080/testApi/api/etudient/update.php", data, header)
+        .then((res) => {
+            console.log(res);
+        }).then(()=>{
+            this.getAll();
+            this.showEditModal(0);
+        })
+
     }
   },
   mounted() {
