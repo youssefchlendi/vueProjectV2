@@ -1,0 +1,187 @@
+<template>
+  <div class="class">
+      <button type="button" class="btn btn-success" @click="showCreateModal" >Add</button>
+    <h1>Gestion des classes</h1>
+    <table class="table table-hover table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Intitule</th>
+      <th scope="col">Abbreviation</th>
+      <th scope="col">action</th>
+    </tr>
+  </thead>
+  <tbody >
+    <tr v-for="classe in this.classes" :key="classe.id">
+      <th scope="row">{{classe.id}}</th>
+      <td>{{classe.intitule}}</td>
+      <td>{{classe.abbreviation}}</td>
+      <td>
+        <button type="button" class=" btn btn-danger" @click="deleteData(classe.id)"><span class="material-icons">delete</span></button>
+        <button type="button" class="mx-2 btn btn-warning" @click="showEditModal(classe.id)"><span class="material-icons">edit</span></button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+<UpdateClassModal @show-edit-modal="showEditModal" @update-data="updateData" :idd="id" :intituled="intituleE" :abrd="abrE" />
+
+
+<CreateClassModal @show-create-modal="showCreateModal" @post-data="postData" />
+
+    <!-- <pre>
+        {{ this.classes }}
+    </pre> -->
+    <h3>Intitule</h3>
+    <input type="text" required v-model="intitule" />
+    <h3>Abreavtion</h3>
+    <input type="text" required v-model="abr" />
+
+    <button type="button" @click="postData">POST</button>
+  </div>
+</template>
+
+<script>
+// @ is an alias to /src
+import axios from "axios";
+import CreateClassModal from '../components/CreateClassModal.vue';
+import UpdateClassModal from '../components/UpdateClassModal.vue';
+export default {
+  name: "Home",
+  components: {
+    CreateClassModal,
+    UpdateClassModal
+  },
+  data() {
+    return {
+      id:"",
+      intitule: "",
+      abr: "",
+      intituleE: "",
+      abrE: "",
+      selected:null,
+      classes: null,
+    };
+  },
+  methods: {test(id){
+    console.log(id);
+  },
+      getAll(){
+        axios
+        .get("http://localhost:8080/testApi/api/class/read.php")
+        .then((response) => (this.classes = response.data))
+        .then(()=>{
+
+          const tab=[];
+          Object.keys(this.classes).forEach(key =>(
+              this.classes[key].forEach(key=>(
+                  tab.push(key)
+              )
+          )));
+          this.classes=tab;
+          console.table(this.classes);
+          console.log('i logi');
+        });
+
+    },getOneE(id){
+      let oneData=[];
+      console.log(id);
+                let tab={};
+  console.log(id);
+      axios
+        .get("http://localhost/testApi/api/class/read_one.php?id="+id)
+        .then((response) => (oneData = response.data))
+        .then(()=>{
+          Object.keys(oneData).forEach((key) =>{
+               tab[key] = oneData[key];
+          });
+}).then(() =>{
+  console.log(tab);
+  this.id=id;
+  this.abrE=tab.abbreviation;
+  this.intituleE=tab.intitule;
+});
+    }
+    ,
+    postData(arg) {
+      let data;
+     if (typeof arg!=='undefined'){
+       data=arg;
+      }
+
+        axios
+        .post('http://localhost:8080/testApi/api/class/create.php', data)
+        .then((res) => {
+            console.log(res);
+        }).then(()=>{
+          this.getAll();
+          this.showCreateModal(1);
+        })
+        ;
+        
+        
+    },deleteData(id) {
+        let data = {
+        id: id,
+        };
+        let header = {
+            };
+        axios
+        .post("http://localhost:8080/testApi/api/class/delete.php", data, header)
+        .then((res) => {
+            console.log(res);
+        }).then(()=>{
+          this.getAll();
+        })
+        ;
+        
+        
+    },
+    showEditModal(del){
+        if(del){
+          this.intitule="";
+          this.abr="";
+        }
+        this.getOneE(del);
+        window.$('#editClass').hasClass("show")?window.$('#editClass').modal("hide"):window.$('#editClass').modal("show");
+    },showCreateModal(del){
+      console.log("test");
+              if(del){
+          this.intitule="";
+          this.abr="";
+        }
+                  window.$('#createClass').hasClass("show")?window.$('#createClass').modal("hide"):window.$('#createClass').modal("show");
+
+    },
+    updateData(arg){
+      let data;
+     if (typeof arg!=='undefined'){
+       data=arg;
+      }
+      console.log(arg);
+        let header = {
+        "Access-Control-Allow-Origin": "*",
+        Accept: "*/*",
+        Connection: "keep-alive",
+        "Content-type": "application/json",
+            };
+        axios
+        .post("http://localhost:8080/testApi/api/class/update.php", data, header)
+        .then((res) => {
+            console.log(res);
+        }).then(()=>{
+          this.getAll();
+          this.showEditModal(0);
+        })
+
+    },
+    beforeUpdate(){
+
+    }
+  },
+  mounted() {
+      this.getAll();
+  }
+};
+
+</script>
