@@ -21,7 +21,6 @@
     <input type="text" required v-model="intitule" />
     <h3>abravtion</h3>
     <input type="text" required v-model="abr" />
-    <button type="button" @click="postData">POST</button>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="showEditModal(1)">Close</button>
@@ -58,6 +57,7 @@ export default {
   },
   methods: {
     refresh(){
+      console.log('refresh');
       this.id=this.idd;
           this.intitule=this.intituled;
           this.abr=this.abrd;
@@ -87,8 +87,13 @@ export default {
             console.log(this.abr+" "+this.intitule);
             })
         .then(() =>{
-            console.log(this.abr+" "+this.intitule);
-            this.$emit('show-edit-modal',id)
+            console.log("sdaasdasd");
+            this.refresh()
+
+        })
+        .then(()=>{
+                    this.$emit('show-edit-modal',id)
+
         });
       },
       updateData(id){
@@ -101,17 +106,6 @@ export default {
       }
   },
   updated() {
-          // this.id=this.idd;
-          // this.intitule=this.intituled;
-          // this.abr=this.abrd;
-
-      // console.log(this.i);
-      // if (!this.i){
-      //     this.intitule=this.int;
-      //     this.abr=this.ab;
-      // }
-      // this.i=!this.i;
-
   }
 };
 </script>

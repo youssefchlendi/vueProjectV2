@@ -44,8 +44,8 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
-import CreateClassModal from '../components/CreateClassModal.vue';
-import UpdateClassModal from '../components/UpdateClassModal.vue';
+import CreateClassModal from '../components/class/CreateClassModal.vue';
+import UpdateClassModal from '../components/class/UpdateClassModal.vue';
 export default {
   name: "Home",
   components: {
