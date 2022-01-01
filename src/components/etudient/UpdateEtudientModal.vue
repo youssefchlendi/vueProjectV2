@@ -92,7 +92,7 @@ export default {
             this.numIns=tab.numIns;
           });
     },
-    updateData(id){
+    updateData(){
       this.$emit('update-data',{
             id:this.Pid,
             nom:this.nom,
