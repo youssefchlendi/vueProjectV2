@@ -5,6 +5,7 @@
     <router-link to="/etudient">Etudient</router-link> |
     <router-link to="/enseignant">Enseignant</router-link> |
     <router-link to="/matiere">Matiere</router-link> |
+    <router-link to="/examen">Examen</router-link> |
     <router-link to="/class">Class</router-link>
   </div>
   <router-view />
