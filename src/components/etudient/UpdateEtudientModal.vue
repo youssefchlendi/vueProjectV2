@@ -84,7 +84,6 @@ export default {
               tab[key] = oneData[key];
           });})
         .then(() =>{
-            console.log(tab);
             this.id=id;
             this.nom=tab.nom;
             this.prenom=tab.prenom;
@@ -94,7 +93,6 @@ export default {
           });
     },
     updateData(id){
-      console.log(id);
       this.$emit('update-data',{
             id:this.Pid,
             nom:this.nom,

@@ -63,9 +63,7 @@ export default {
       classes: null,
     };
   },
-  methods: {test(id){
-    console.log(id);
-  },
+  methods: {
       getAll(){
         axios
         .get("http://localhost:8080/testApi/api/class/read.php")
@@ -79,15 +77,11 @@ export default {
               )
           )));
           this.classes=tab;
-          console.table(this.classes);
-          console.log('i logi');
         });
 
     },getOneE(id){
       let oneData=[];
-      console.log(id);
                 let tab={};
-  console.log(id);
       axios
         .get("http://localhost/testApi/api/class/read_one.php?id="+id)
         .then((response) => (oneData = response.data))
@@ -96,7 +90,6 @@ export default {
                tab[key] = oneData[key];
           });
 }).then(() =>{
-  console.log(tab);
   this.id=id;
   this.abrE=tab.abbreviation;
   this.intituleE=tab.intitule;
@@ -145,7 +138,6 @@ export default {
         this.getOneE(del);
         window.$('#editClass').hasClass("show")?window.$('#editClass').modal("hide"):window.$('#editClass').modal("show");
     },showCreateModal(del){
-      console.log("test");
               if(del){
           this.intitule="";
           this.abr="";

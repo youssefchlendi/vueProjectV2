@@ -57,7 +57,6 @@ export default {
   },
   methods: {
     refresh(){
-      console.log('refresh');
       this.id=this.idd;
           this.intitule=this.intituled;
           this.abr=this.abrd;
@@ -84,10 +83,8 @@ export default {
             this.id=id;
             this.abr=tab.abbreviation;
             this.intitule=tab.intitule;
-            console.log(this.abr+" "+this.intitule);
             })
         .then(() =>{
-            console.log("sdaasdasd");
             this.refresh()
 
         })
