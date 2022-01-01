@@ -1,5 +1,4 @@
 <template>
-<button type="button" class="btn" @click="test">btn</button>
   <div class="updateEtudient">
 <!-- Edit Modal -->
 <div class="modal fade text-dark" id="editEtudient" tabindex="-1" role="dialog" aria-labelledby="editEtudientLabel" aria-hidden="true">
@@ -40,7 +39,7 @@
 import axios from "axios";
 
 export default {
-  name: "UpdateClassModal",
+  name: "UpdateEtudientModal",
   props: {
     Pid:Number,
   },

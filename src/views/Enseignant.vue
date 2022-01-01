@@ -36,7 +36,7 @@ import CreateEnseignantModal from '../components/enseignant/CreateEnseignantModa
 // @ is an alias to /src
 import axios from "axios";
 export default {
-  name: "Home",
+  name: "Enseignant",
   components: {
       CreateEnseignantModal,
       UpdateEnseignantModal

@@ -1,5 +1,4 @@
 <template>
-<button type="button" class="btn" @click="test">btn</button>
   <div class="updateEnseignant">
 <!-- Edit Modal -->
 <div class="modal fade text-dark" id="editEnseignant" tabindex="-1" role="dialog" aria-labelledby="editEnseignantLabel" aria-hidden="true">

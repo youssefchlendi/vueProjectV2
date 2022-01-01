@@ -40,7 +40,7 @@ import CreateEtudientModal from '../components/etudient/CreateEtudientModal.vue'
 // @ is an alias to /src
 import axios from "axios";
 export default {
-  name: "Home",
+  name: "Etudient",
   components: {
       CreateEtudientModal,
       UpdateEtudientModal

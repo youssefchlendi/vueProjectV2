@@ -28,16 +28,6 @@
 
 
 <CreateClassModal @show-create-modal="showCreateModal" @post-data="postData" />
-
-    <!-- <pre>
-        {{ this.classes }}
-    </pre> -->
-    <h3>Intitule</h3>
-    <input type="text" required v-model="intitule" />
-    <h3>Abreavtion</h3>
-    <input type="text" required v-model="abr" />
-
-    <button type="button" @click="postData">POST</button>
   </div>
 </template>
 
@@ -47,7 +37,7 @@ import axios from "axios";
 import CreateClassModal from '../components/class/CreateClassModal.vue';
 import UpdateClassModal from '../components/class/UpdateClassModal.vue';
 export default {
-  name: "Home",
+  name: "Class",
   components: {
     CreateClassModal,
     UpdateClassModal
