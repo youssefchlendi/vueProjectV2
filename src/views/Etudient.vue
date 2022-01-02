@@ -29,7 +29,7 @@
             </tr>
         </tbody>
 </table>
-<UpdateEtudientModal @show-edit-modal="showEditModal" @update-data="updateData" :Pid="id" />
+<UpdateEtudientModal @show-edit-modal="showEditModal" @update-data="updateData" :Pid="Number(id)" />
 <CreateEtudientModal @show-create-modal="showCreateModal" @post-data="postData" />
   </div>
 </template>

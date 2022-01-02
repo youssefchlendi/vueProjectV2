@@ -20,8 +20,10 @@
         <input type="text" required v-model="prenom" />
         <h3>CIN</h3>
         <input type="text" required v-model="CIN" />
-        <h3>Class</h3>
-        <input type="text" required v-model="classe" />
+        <h3>NumIns</h3>
+        <select v-model="classe">
+            <option v-for="classt in classes" :selected="classt.id==classe" :key="classt.id" :value="classt.id">{{ classt.intitule }}</option>
+        </select>
         <h3>NumIns</h3>
         <input type="text" required v-model="numIns" />
       </div>
@@ -56,6 +58,7 @@ export default {
       CIN:null,
       classe:null,
       numIns:null,
+      classes:null
     };
   },
   methods: {
@@ -97,7 +100,7 @@ export default {
             nom:this.nom,
             prenom:this.prenom,
             CIN:this.cin,
-            classe:this.classe,
+            class:this.classe,
             numIns:this.numIns,
       })
           this.id=null;
@@ -106,7 +109,28 @@ export default {
           this.CIN=null;
           this.classe=null;
           this.numIns=null;
+    },    getClasses(){
+      const tab=[];
+      axios
+        .get("http://localhost:8080/api/class/read.php")
+        .then((response) => (this.classes = response.data))
+        .then(()=>{
+          Object.keys(this.classes).forEach(key =>(
+              this.classes[key].forEach(key=>(
+                  tab.push(key)
+              )
+          )));
+        })
+        .then(() =>{
+          this.classes=tab;
+        });
     }
+  },
+  mounted(){
+    let i=true;
+    if (i)
+      this.getClasses();
+    i=false;
   },
   updated() {
   }
