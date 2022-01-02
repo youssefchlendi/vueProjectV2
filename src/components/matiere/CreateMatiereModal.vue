@@ -1,13 +1,25 @@
 <template>
-
   <div class="createMatiere">
     <!-- Create Modal -->
-    <div class="modal fade" id="createMatiere" tabindex="-1" role="dialog" aria-labelledby="createMatiereLabel" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="createMatiere"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="createMatiereLabel"
+      aria-hidden="true"
+    >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="createMatiereLabel">create Matiere</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="showCreateModal(1)">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              @click="showCreateModal(1)"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -18,12 +30,23 @@
             <input type="number" required v-model="coefficient" />
             <h3>IdProf</h3>
             <select v-model="idProf">
-              <option v-for="prof in profs" :key="prof.id" :value="prof.id">{{ prof.nom+" "+prof.prenom }}</option>
-            </select>  
+              <option v-for="prof in profs" :key="prof.id" :value="prof.id">
+                {{ prof.nom + " " + prof.prenom }}
+              </option>
+            </select>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="showCreateModal(1)">Close</button>
-            <button type="button" class="btn btn-primary" @click="postData" >Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+              @click="showCreateModal(1)"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary" @click="postData">
+              Save changes
+            </button>
           </div>
         </div>
       </div>
@@ -36,60 +59,54 @@ import axios from "axios";
 
 export default {
   name: "CreateMatiereModal",
-  props: {
-  },
-  data(){
-      return {
-        id:"",
-        intitule:"",
-        coefficient:"",
-        idProf:"",
-        profs:null,
-      };
+  props: {},
+  data() {
+    return {
+      id: "",
+      intitule: "",
+      coefficient: "",
+      idProf: "",
+      profs: null,
+    };
   },
   methods: {
-    postData(){
-      this.$emit('post-data',{
-        intitule:this.intitule,
-        coefficient:parseFloat(this.coefficient),
-        idProf:this.idProf, 
-      })
-        this.id="";
-        this.intitule="";
-        this.coefficient="";
-        this.idProf="";
-
+    postData() {
+      this.$emit("post-data", {
+        intitule: this.intitule,
+        coefficient: parseFloat(this.coefficient),
+        idProf: this.idProf,
+      });
+      this.id = "";
+      this.intitule = "";
+      this.coefficient = "";
+      this.idProf = "";
     },
-    showCreateModal(del){
-      if (del){
-        this.id="";
-        this.intitule="";
-        this.coefficient="";
-        this.idProf="";
+    showCreateModal(del) {
+      if (del) {
+        this.id = "";
+        this.intitule = "";
+        this.coefficient = "";
+        this.idProf = "";
       }
-      this.$emit('show-create-modal',{del})
+      this.$emit("show-create-modal", { del });
     },
-    getAllProfs(){
-        axios
+    getAllProfs() {
+      axios
         .get("http://localhost:8085/api/enseignant/read.php")
         .then((response) => (this.profs = response.data))
-        .then(()=>{
-            const tab=[];
-            Object.keys(this.profs).forEach(key =>(
-                this.profs[key].forEach(key=>(
-                    tab.push(key)
-                )
-            )));
-            this.profs=tab;
+        .then(() => {
+          const tab = [];
+          Object.keys(this.profs).forEach((key) =>
+            this.profs[key].forEach((key) => tab.push(key))
+          );
+          this.profs = tab;
         });
-    }
+    },
   },
-  mounted(){
-    let i=true;
-    if (i)
-      this.getAllProfs();
-    i=false;
-  }
+  mounted() {
+    let i = true;
+    if (i) this.getAllProfs();
+    i = false;
+  },
 };
 </script>
-
