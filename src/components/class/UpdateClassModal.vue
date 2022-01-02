@@ -49,10 +49,9 @@ export default {
   ],
   data(){
       return {
-          test1AsData: {id:this.idd,int:this.intituled,abr:this.abrd},
-          id:this.idd,
-          intitule:this.intituled,
-          abr:this.abrd,
+          id:null,
+          intitule:null,
+          abr:null,
       };
   },
   methods: {

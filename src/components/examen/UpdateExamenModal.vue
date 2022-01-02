@@ -92,7 +92,7 @@ export default {
             idMatiere:this.idMatiere,
             idProf:this.idProf,
             intitule:this.intitule,
-            coefficient:this.coefficient,
+            coefficient:this.coefficient!=null?parseFloat(this.coefficient):null,
       })
           this.id=null;
           this.idMatiere=null;

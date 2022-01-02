@@ -50,7 +50,7 @@ export default {
         idMatiere:this.idMatiere,
         idProf:this.idProf,
         intitule:this.intitule, 
-        coefficient:this.coefficient, 
+        coefficient:parseFloat(this.coefficient), 
       })
         this.idMatiere="";
         this.idProf="";

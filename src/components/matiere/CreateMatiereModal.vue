@@ -46,7 +46,7 @@ export default {
     postData(){
       this.$emit('post-data',{
         intitule:this.intitule,
-        coefficient:this.coefficient,
+        coefficient:parseFloat(this.coefficient),
         idProf:this.idProf, 
       })
         this.id="";

@@ -85,7 +85,7 @@ export default {
       this.$emit('update-data',{
             id:this.Pid,
             intitule:this.intitule,
-            coefficient:this.coefficient,
+            coefficient:this.coefficient!=null?parseFloat(this.coefficient):null,
             idProf:this.idProf,
       })
           this.id=null;
