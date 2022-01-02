@@ -72,7 +72,7 @@ export default {
       let oneData=[];
       let tab={};
       axios
-        .get("http://localhost/api/class/read_one.php?id="+id)
+        .get("http://localhost:8085/api/class/read_one.php?id="+id)
         .then((response) => (oneData = response.data))
         .then(()=>{
           Object.keys(oneData).forEach((key) =>{

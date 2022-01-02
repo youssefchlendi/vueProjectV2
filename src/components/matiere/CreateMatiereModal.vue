@@ -71,7 +71,7 @@ export default {
     },
     getAllProfs(){
         axios
-        .get("http://localhost:8080/api/enseignant/read.php")
+        .get("http://localhost:8085/api/enseignant/read.php")
         .then((response) => (this.profs = response.data))
         .then(()=>{
             const tab=[];

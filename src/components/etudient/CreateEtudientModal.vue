@@ -76,7 +76,7 @@ export default {
     getClasses(){
       const tab=[];
       axios
-        .get("http://localhost:8080/api/class/read.php")
+        .get("http://localhost:8085/api/class/read.php")
         .then((response) => (this.classes = response.data))
         .then(()=>{
           Object.keys(this.classes).forEach(key =>(

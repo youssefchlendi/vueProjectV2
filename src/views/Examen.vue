@@ -53,7 +53,7 @@ export default {
   methods: {
     getAll(){
         axios
-        .get("http://localhost:8080/api/examen/read.php")
+        .get("http://localhost:8085/api/examen/read.php")
         .then((response) => (this.examens = response.data))
         .then(()=>{
             const tab=[];
@@ -71,7 +71,7 @@ export default {
             data=arg;
         }
         axios
-        .post('http://localhost:8080/api/examen/create.php', data)
+        .post('http://localhost:8085/api/examen/create.php', data)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -89,7 +89,7 @@ export default {
             let header = {
         };
         axios
-        .post("http://localhost:8080/api/examen/delete.php", data, header)
+        .post("http://localhost:8085/api/examen/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -113,7 +113,7 @@ export default {
             "Content-type": "application/json",
         };
         axios
-        .post("http://localhost:8080/api/examen/update.php", data, header)
+        .post("http://localhost:8085/api/examen/update.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{

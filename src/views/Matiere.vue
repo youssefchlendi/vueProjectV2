@@ -51,7 +51,7 @@ export default {
   methods: {
     getAll(){
         axios
-        .get("http://localhost:8080/api/matiere/read.php")
+        .get("http://localhost:8085/api/matiere/read.php")
         .then((response) => (this.matieres = response.data))
         .then(()=>{
             const tab=[];
@@ -69,7 +69,7 @@ export default {
             data=arg;
         }
         axios
-        .post('http://localhost:8080/api/matiere/create.php', data)
+        .post('http://localhost:8085/api/matiere/create.php', data)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -87,7 +87,7 @@ export default {
             let header = {
         };
         axios
-        .post("http://localhost:8080/api/matiere/delete.php", data, header)
+        .post("http://localhost:8085/api/matiere/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -111,7 +111,7 @@ export default {
             "Content-type": "application/json",
         };
         axios
-        .post("http://localhost:8080/api/matiere/update.php", data, header)
+        .post("http://localhost:8085/api/matiere/update.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{

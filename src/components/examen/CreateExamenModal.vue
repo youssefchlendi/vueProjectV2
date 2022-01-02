@@ -78,7 +78,7 @@ export default {
     getMatiere(){
       const tab=[];
       axios
-        .get("http://localhost:8080/api/matiere/read.php")
+        .get("http://localhost:8085/api/matiere/read.php")
         .then((response) => (this.Matiere = response.data))
         .then(()=>{
           Object.keys(this.Matiere).forEach(key =>(
@@ -93,7 +93,7 @@ export default {
     },
     getAllProfs(){
         axios
-        .get("http://localhost:8080/api/enseignant/read.php")
+        .get("http://localhost:8085/api/enseignant/read.php")
         .then((response) => (this.profs = response.data))
         .then(()=>{
             const tab=[];

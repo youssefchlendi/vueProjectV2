@@ -51,7 +51,7 @@ export default {
   methods: {
     getAll(){
         axios
-        .get("http://localhost:8080/api/enseignant/read.php")
+        .get("http://localhost:8085/api/enseignant/read.php")
         .then((response) => (this.enseignants = response.data))
         .then(()=>{
             const tab=[];
@@ -69,7 +69,7 @@ export default {
             data=arg;
         }
         axios
-        .post('http://localhost:8080/api/enseignant/create.php', data)
+        .post('http://localhost:8085/api/enseignant/create.php', data)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -87,7 +87,7 @@ export default {
             let header = {
         };
         axios
-        .post("http://localhost:8080/api/enseignant/delete.php", data, header)
+        .post("http://localhost:8085/api/enseignant/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -111,7 +111,7 @@ export default {
             "Content-type": "application/json",
         };
         axios
-        .post("http://localhost:8080/api/enseignant/update.php", data, header)
+        .post("http://localhost:8085/api/enseignant/update.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
