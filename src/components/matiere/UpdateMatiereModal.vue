@@ -19,7 +19,10 @@
         <h3>Coefficient</h3>
         <input type="number" required v-model="coefficient" />
         <h3>IdProf</h3>
-        <input type="number" required v-model="idProf" />
+        <select v-model="idProf">
+          <option/>
+          <option v-for="prof in profs" :selected="prof.id==idProf" :key="prof.id" :value="prof.id">{{ prof.nom+" "+prof.prenom }}</option>
+        </select> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="showEditModal(1)">Close</button>
@@ -50,6 +53,7 @@ export default {
       intitule:"",
       coefficient:"",
       idProf:"",
+      profs:null,
     };
   },
   methods: {
@@ -92,7 +96,27 @@ export default {
           this.intitule=null;
           this.coefficient=null;
           this.idProf=null;
+    },
+    getAllProfs(){
+        axios
+        .get("http://localhost:8080/api/enseignant/read.php")
+        .then((response) => (this.profs = response.data))
+        .then(()=>{
+            const tab=[];
+            Object.keys(this.profs).forEach(key =>(
+                this.profs[key].forEach(key=>(
+                    tab.push(key)
+                )
+            )));
+            this.profs=tab;
+        });
     }
+  },
+  mounted(){
+    let i=true;
+    if (i)
+      this.getAllProfs();
+    i=false;
   },
   updated() {
   }
