@@ -55,7 +55,7 @@ export default {
   methods: {
     getAll(){
         axios
-        .get("http://localhost:8080/testApi/api/etudient/read.php")
+        .get("http://localhost:8080/api/etudient/read.php")
         .then((response) => (this.classes = response.data))
         .then(()=>{
             const tab=[];
@@ -73,7 +73,7 @@ export default {
             data=arg;
         }
         axios
-        .post('http://localhost:8080/testApi/api/etudient/create.php', data)
+        .post('http://localhost:8080/api/etudient/create.php', data)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -91,7 +91,7 @@ export default {
             let header = {
         };
         axios
-        .post("http://localhost:8080/testApi/api/etudient/delete.php", data, header)
+        .post("http://localhost:8080/api/etudient/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -102,7 +102,7 @@ export default {
         let oneData=[];
         let tab={};
         axios
-        .get("http://localhost/testApi/api/etudient/read_one.php?id="+id)
+        .get("http://localhost/api/etudient/read_one.php?id="+id)
         .then((response) => (oneData = response.data))
         .then(()=>{
             Object.keys(oneData).forEach((key) =>{
@@ -129,7 +129,7 @@ export default {
             "Content-type": "application/json",
         };
         axios
-        .post("http://localhost:8080/testApi/api/etudient/update.php", data, header)
+        .post("http://localhost:8080/api/etudient/update.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{

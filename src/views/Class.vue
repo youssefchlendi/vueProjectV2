@@ -56,10 +56,9 @@ export default {
   methods: {
       getAll(){
         axios
-        .get("http://localhost:8080/testApi/api/class/read.php")
+        .get("http://localhost:8080/api/class/read.php")
         .then((response) => (this.classes = response.data))
         .then(()=>{
-
           const tab=[];
           Object.keys(this.classes).forEach(key =>(
               this.classes[key].forEach(key=>(
@@ -73,7 +72,7 @@ export default {
       let oneData=[];
                 let tab={};
       axios
-        .get("http://localhost/testApi/api/class/read_one.php?id="+id)
+        .get("http://localhost/api/class/read_one.php?id="+id)
         .then((response) => (oneData = response.data))
         .then(()=>{
           Object.keys(oneData).forEach((key) =>{
@@ -93,7 +92,7 @@ export default {
       }
 
         axios
-        .post('http://localhost:8080/testApi/api/class/create.php', data)
+        .post('http://localhost:8080/api/class/create.php', data)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -110,7 +109,7 @@ export default {
         let header = {
             };
         axios
-        .post("http://localhost:8080/testApi/api/class/delete.php", data, header)
+        .post("http://localhost:8080/api/class/delete.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
@@ -148,7 +147,7 @@ export default {
         "Content-type": "application/json",
             };
         axios
-        .post("http://localhost:8080/testApi/api/class/update.php", data, header)
+        .post("http://localhost:8080/api/class/update.php", data, header)
         .then((res) => {
             console.log(res);
         }).then(()=>{
