@@ -1,4 +1,5 @@
 <template>
+    <navBar/>
   <div class="class">
       <button type="button" class="btn btn-success" @click="showCreateModal" >Add</button>
     <h1>Gestion des classes</h1>
@@ -34,13 +35,15 @@
 <script>
 // @ is an alias to /src
 import axios from "axios";
+import navBar from '../components/navbar.vue';
 import CreateClassModal from '../components/class/CreateClassModal.vue';
 import UpdateClassModal from '../components/class/UpdateClassModal.vue';
 export default {
   name: "Class",
   components: {
     CreateClassModal,
-    UpdateClassModal
+    UpdateClassModal,
+      navBar,
   },
   data() {
     return {

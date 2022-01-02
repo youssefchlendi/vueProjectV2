@@ -1,4 +1,5 @@
 <template>
+    <navBar/>
   <div class="eteudient">
     <button type="button" class="btn btn-success" @click="showCreateModal" >Add</button>
     <h1>Gestion des etudients</h1>
@@ -35,6 +36,7 @@
 </template>
 
 <script>
+import navBar from '../components/navbar.vue';
 import UpdateEtudientModal from '../components/etudient/UpdateEtudientModal.vue';
 import CreateEtudientModal from '../components/etudient/CreateEtudientModal.vue';
 // @ is an alias to /src
@@ -43,7 +45,8 @@ export default {
   name: "Etudient",
   components: {
       CreateEtudientModal,
-      UpdateEtudientModal
+      UpdateEtudientModal,
+      navBar,
   },
   data() {
     return {

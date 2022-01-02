@@ -1,4 +1,5 @@
 <template>
+    <navBar/>
   <div class="eteudient">
     <button type="button" class="btn btn-success" @click="showCreateModal" >Add</button>
     <h1>Gestion des examens</h1>
@@ -34,6 +35,7 @@
 
 <script>
 import UpdateExamenModal from '../components/examen/UpdateExamenModal.vue';
+import navBar from '../components/navbar.vue';
 import CreateExamenModal from '../components/examen/CreateExamenModal.vue';
 // @ is an alias to /src
 import axios from "axios";
@@ -41,7 +43,8 @@ export default {
   name: "Examen",
   components: {
       CreateExamenModal,
-      UpdateExamenModal
+      UpdateExamenModal,
+      navBar,
   },
   data() {
     return {

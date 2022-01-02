@@ -1,4 +1,5 @@
 <template>
+    <navBar/>
   <div class="eteudient">
     <button type="button" class="btn btn-success" @click="showCreateModal" >Add</button>
     <h1>Gestion des matiere</h1>
@@ -35,11 +36,13 @@ import UpdateMatiereModal from '../components/matiere/UpdateMatiereModal.vue';
 import CreateMatiereModal from '../components/matiere/CreateMatiereModal.vue';
 // @ is an alias to /src
 import axios from "axios";
+import navBar from '../components/navbar.vue';
 export default {
   name: "Matiere",
   components: {
       CreateMatiereModal,
-      UpdateMatiereModal
+      UpdateMatiereModal,
+      navBar,
   },
   data() {
     return {
