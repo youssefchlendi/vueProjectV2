@@ -23,7 +23,7 @@
             <h3>Intitule</h3>
             <input type="text" required v-model="intitule" />
             <h3>Coefficient</h3>
-            <input type="number" min="10000000" max="99999999" required v-model="coefficient" />
+            <input type="number" min="0" max="99999999" required v-model="coefficient" />
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="showCreateModal(1)">Close</button>
