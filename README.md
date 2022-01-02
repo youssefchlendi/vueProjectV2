@@ -1,7 +1,7 @@
 ## 1st step : 
 npm install
 ## 2nd step : 
-Copy thecontent of https://github.com/youssefchlendi/phpApi in folder named 'api' (create it) in your htdocs/www folder
+Copy thecontent of api folder in folder named 'api' (create it) in your htdocs/www folder
 ## 3rd step : 
 create a database named vue in your xampp/wampp server and import the sql file in api folder 
 ## 4th step :
