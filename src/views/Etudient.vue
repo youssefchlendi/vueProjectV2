@@ -50,6 +50,8 @@ export default {
         id:null,
         etudients:null,
         etudient:null,
+        abr:"",
+        
     };
   },
   methods: {
@@ -137,6 +139,19 @@ export default {
             this.showEditModal(0);
         })
 
+    },getOneClass(id){
+      let oneData=[];
+                let tab={};
+      axios
+        .get("http://localhost/api/class/read_one.php?id="+id)
+        .then((response) => (oneData = response.data))
+        .then(()=>{
+          Object.keys(oneData).forEach((key) =>{
+               tab[key] = oneData[key];
+          });
+        }).then(() =>{
+            });
+        this.abr=(tab.abbreviation)
     }
   },
   mounted() {

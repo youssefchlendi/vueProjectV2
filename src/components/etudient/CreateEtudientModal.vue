@@ -19,7 +19,9 @@
             <h3>CIN</h3>
             <input type="text" required v-model="CIN" />
             <h3>Class</h3>
-            <input type="text" required v-model="classe" />
+            <select v-model="classe">
+              <option v-for="classe in classes" :key="classe.id" :value="classe.id">{{ classe.intitule }}</option>
+            </select>  
             <h3>NumIns</h3>
             <input type="text" required v-model="numIns" />
           </div>
@@ -34,7 +36,8 @@
 </template>
 
 <script>
-export default {
+import axios from "axios";
+export default {  
   name: "CreateEtudientModal",
   props: {
   },
@@ -46,6 +49,7 @@ export default {
         CIN:"",
         classe:"",
         numIns:"",
+        classes:null
       };
   },
   methods: {
@@ -68,7 +72,29 @@ export default {
         this.numIns="";
       }
       this.$emit('show-create-modal',{del})
-    }
+    },
+    getClasses(){
+      const tab=[];
+      axios
+        .get("http://localhost:8080/api/class/read.php")
+        .then((response) => (this.classes = response.data))
+        .then(()=>{
+          Object.keys(this.classes).forEach(key =>(
+              this.classes[key].forEach(key=>(
+                  tab.push(key)
+              )
+          )));
+        })
+        .then(() =>{
+          this.classes=tab;
+        });
+    },
+  },
+  mounted(){
+    let i=true;
+    if (i)
+      this.getClasses();
+    i=false;
   }
 };
 </script>
