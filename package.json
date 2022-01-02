@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 8085",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build --port 8085",
+    "lint": "vue-cli-service lint --port 8085"
   },
   "dependencies": {
     "axios": "^0.24.0",
