@@ -15,9 +15,13 @@
       </div>
       <div class="modal-body">
           <h3>IdMatiere</h3>
-          <input type="text" required v-model="idMatiere" />
+          <select v-model="idMatiere">
+            <option v-for="matiere in Matiere" :selected="matiere.id==idMatiere" :key="matiere.id" :value="matiere.id">{{ matiere.intitule }}</option>
+          </select>
           <h3>IdProf</h3>
-          <input type="text" required v-model="idProf" />
+          <select v-model="idProf">
+            <option v-for="prof in profs" :selected="prof.id==idProf" :key="prof.id" :value="prof.id">{{ prof.nom+" "+prof.prenom }}</option>
+          </select>
           <h3>Intitule</h3>
           <input type="text" required v-model="intitule" />
           <h3>Coefficient</h3>
@@ -53,6 +57,9 @@ export default {
       idProf:null,
       intitule:null,
       coefficient:null,
+      Matiere:null,
+      profs:null,
+
     };
   },
   methods: {
@@ -99,9 +106,46 @@ export default {
           this.idProf=null;
           this.intitule=null;
           this.coefficient=null;
+    },
+     getMatiere(){
+      const tab=[];
+      axios
+        .get("http://localhost:8080/api/matiere/read.php")
+        .then((response) => (this.Matiere = response.data))
+        .then(()=>{
+          Object.keys(this.Matiere).forEach(key =>(
+              this.Matiere[key].forEach(key=>(
+                  tab.push(key)
+              )
+          )));
+        })
+        .then(() =>{
+          this.Matiere=tab;
+        });
+    },
+    getAllProfs(){
+        axios
+        .get("http://localhost:8080/api/enseignant/read.php")
+        .then((response) => (this.profs = response.data))
+        .then(()=>{
+            const tab=[];
+            Object.keys(this.profs).forEach(key =>(
+                this.profs[key].forEach(key=>(
+                    tab.push(key)
+                )
+            )));
+            this.profs=tab;
+        });
     }
   },
   updated() {
+  },
+  mounted(){
+    let i=true;
+    if (i)
+      this.getMatiere();
+      this.getAllProfs();
+    i=false;
   }
 };
 </script>
