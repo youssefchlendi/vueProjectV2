@@ -13,6 +13,7 @@
   <button class="btn btn-success p-2 m-2" type="button" @click="showCol(3)" >Etudients</button>
   <button class="btn btn-success p-2 m-2" type="button" @click="showCol(4)" >Matiere</button>
   <button class="btn btn-success p-2 m-2" type="button" @click="showCol(5)" >Examens</button>
+  <button class="btn btn-success p-2 m-2" type="button" @click="showAll" >All</button>
 </p>
     <div class="collapse multi-collapse" id="coll1">
       <div class="card card-body">
@@ -284,6 +285,12 @@ export default {
       window.$("#coll"+id).hasClass("show")
         ? window.$("#coll"+id).collapse("hide")
         : window.$("#coll"+id).collapse("show")
+    },
+    showAll(){
+            window.$(".multi-collapse").hasClass("show")
+        ? window.$(".multi-collapse").collapse("hide")
+        : window.$(".multi-collapse").collapse("show")
+
     }
   },
   updated() {
