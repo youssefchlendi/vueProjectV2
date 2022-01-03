@@ -320,6 +320,9 @@ export default {
         : window.$(".multi-collapse").collapse("show");
     },
   },
+  created() {
+    document.title="Search";
+  },
   updated() {},
 };
 </script>

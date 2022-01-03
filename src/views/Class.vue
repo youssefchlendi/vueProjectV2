@@ -187,5 +187,8 @@ export default {
   mounted() {
     this.getAll();
   },
+  created() {
+    document.title="Class";
+  }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div id="navbar">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+    <nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light px-4">
       <a class="navbar-brand" href="#">
         <img width="50" height="50" src="../assets/logo.png" />
       </a>
@@ -66,3 +66,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+#navbar{
+  margin-bottom:100px;
+}
+</style>

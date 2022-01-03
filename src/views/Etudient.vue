@@ -75,6 +75,7 @@ export default {
   },
   data() {
     return {
+      title:"etudient",
       id: null,
       etudients: null,
       etudient: null,
@@ -189,5 +190,8 @@ export default {
   mounted() {
     this.getAll();
   },
+  created() {
+    document.title=this.title;
+  }
 };
 </script>

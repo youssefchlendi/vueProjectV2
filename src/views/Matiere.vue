@@ -155,5 +155,8 @@ export default {
   mounted() {
     this.getAll();
   },
+  created() {
+    document.title="Matiere";
+  }
 };
 </script>
