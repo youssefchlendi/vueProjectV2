@@ -1,6 +1,6 @@
 <template>
   <div id="navbar">
-    <nav class="navbar  fixed-top navbar-expand-lg navbar-light bg-light px-4">
+    <nav class="navbar shadow-lg fixed-top navbar-expand-lg navbar-light bg-light px-4">
       <a class="navbar-brand" href="#">
         <img width="50" height="50" src="../assets/logo.png" />
       </a>
@@ -13,7 +13,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav" >
           <li class="nav-item active">
             <router-link class="nav-link" to="/">
               Home<span class="mx-2 material-icons">home</span>
