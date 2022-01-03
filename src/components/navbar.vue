@@ -44,6 +44,11 @@
               Class<span class="mx-2 material-icons">class</span>
             </router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/search">
+              Search<span class="mx-2 material-icons">search</span>
+            </router-link>
+          </li>
         </ul>
       </div>
     </nav>
