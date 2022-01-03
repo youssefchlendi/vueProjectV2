@@ -1,7 +1,7 @@
 <template>
   <navBar />
   <div class="class">
-    <button type="button" class="btn btn-success" @click="showCreateModal">
+    <button type="button" class="btn btn-success float-end mx-4" @click="showCreateModal">
       Add
     </button>
     <h1>Gestion des classes</h1>
