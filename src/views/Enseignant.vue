@@ -1,7 +1,11 @@
 <template>
-  <navBar />
-  <div class="eteudient m-4" style="margin-bottom:250px!important">
-    <button type="button" class="btn btn-success float-end mx-4" @click="showCreateModal">
+  <div class="eteudient m-4" style="margin-bottom: 250px !important">
+    <navBar />
+    <button
+      type="button"
+      class="btn btn-success float-end mx-4"
+      @click="showCreateModal"
+    >
       Add
     </button>
     <h1>Gestion des enseignant</h1>

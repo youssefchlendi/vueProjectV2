@@ -1,6 +1,6 @@
 <template>
-  <navBar />
   <div class="home">
+    <navBar />
     <img alt="Vue logo" src="../assets/logo.png" />
   </div>
 </template>
