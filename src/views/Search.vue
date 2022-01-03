@@ -1,6 +1,6 @@
 <template>
   <navBar />
-  <div class="home m-4">
+  <div class="search m-4" style="margin-bottom:250px!important">
 <form action="javascript:" class="search-bar">
 	<input type="search" name="search" pattern=".*\S.*" @keypress="getAll"  required v-model="search">
 	<button class="search-btn"  @click="getAll" type="submit">

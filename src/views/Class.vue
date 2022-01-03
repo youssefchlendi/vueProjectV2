@@ -1,6 +1,6 @@
 <template>
   <navBar />
-  <div class="class">
+  <div class="class m-4" style="margin-bottom:250px!important">
     <button type="button" class="btn btn-success float-end mx-4" @click="showCreateModal">
       Add
     </button>
